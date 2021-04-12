@@ -1,10 +1,14 @@
 version: "3"
 services:
-  todo-app:
-    container_name: todo-app
-    build: .
-    environment:
-      NODE_ENV: development
-      PORT: 4000
+  database-postgres:
+    container_name: postgres
+    image: postgres:12.6
     ports:
-      - "4000:3000"
+      - "5432:5432"
+    volumes:
+      - ./src/migrations/dbinit.sql:/docker-entrypoint-initdb.d/dbinit.sql
+    restart: always
+    environment:
+      POSTGRES_USER: myusername
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: recipedb

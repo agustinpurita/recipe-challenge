@@ -9,7 +9,7 @@ export class GetCategoryInput {
 
 @InputType()
 export class GetCategoriesInput {
-  @Field()
+  @Field(() => String, { nullable: true })
   @Length(1, 100)
   name?: string;
 }

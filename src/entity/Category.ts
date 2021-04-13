@@ -27,6 +27,6 @@ export class Category extends BaseEntity {
   @UpdateDateColumn({ type: "timestamp" })
   updatedAt: string;
 
-  @OneToMany(() => Recipe, (recipe) => recipe.category)
+  @OneToMany((type) => Recipe, (recipe) => recipe.category)
   recipes: Recipe[];
 }

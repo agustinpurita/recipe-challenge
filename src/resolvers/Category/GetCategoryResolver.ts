@@ -1,7 +1,10 @@
 import { Resolver, Mutation, Arg, UseMiddleware } from "type-graphql";
 import { Category } from "../../entity/Category";
 import { isAuth } from "../../middlewares/isAuth";
-import { GetCategoriesInput, GetCategoryInput } from "./types/input/GetCategoryInput";
+import {
+  GetCategoriesInput,
+  GetCategoryInput,
+} from "./types/input/GetCategoryInput";
 
 @Resolver()
 export class GetCategoryResolver {
@@ -11,12 +14,10 @@ export class GetCategoryResolver {
     @Arg("input", () => GetCategoriesInput, { nullable: true })
     input: GetCategoriesInput
   ) {
-    console.log(input);
-    const { name } = input;
+    const where = input || {};
+    console.log("where", where);
     return await Category.find({
-      where: {
-        name,
-      },
+      where,
     });
   }
 
@@ -26,7 +27,6 @@ export class GetCategoryResolver {
     @Arg("input", () => GetCategoryInput, { nullable: false })
     input: GetCategoryInput
   ) {
-    console.log(input);
     const { id } = input;
     return await Category.findOne({
       where: {

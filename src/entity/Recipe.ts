@@ -6,15 +6,16 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  JoinColumn,
 } from "typeorm";
-import { Field, Int, ObjectType } from "type-graphql";
+import { Field, ID, ObjectType } from "type-graphql";
 import { User } from "./User";
 import { Category } from "./Category";
 
 @ObjectType()
 @Entity()
 export class Recipe extends BaseEntity {
-  @Field(() => Int)
+  @Field(() => ID)
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -27,20 +28,28 @@ export class Recipe extends BaseEntity {
   description: string;
 
   @Field(() => [String])
-  @Column("simple-array", { array: true })
+  @Column("simple-array")
   ingredients: string[];
 
-  @Field(() => String)
+  @Field({ description: "Reference to id of user" })
+  @Column()
+  userId: number;
+
+  @Field({ description: "Reference to id of category" })
+  @Column()
+  categoryId: number;
+
   @CreateDateColumn({ type: "timestamp" })
   createdAt: string;
 
-  @Field(() => String)
   @UpdateDateColumn({ type: "timestamp" })
   updatedAt: string;
 
-  @ManyToOne(() => User, (user) => user.recipes)
+  @ManyToOne((type) => User)
+  @JoinColumn({ name: "userId", referencedColumnName: "id" })
   user: User;
 
-  @ManyToOne(() => Category, (category) => category.recipes)
+  @ManyToOne((type) => Category)
+  @JoinColumn({ name: "categoryId", referencedColumnName: "id" })
   category: Category;
 }

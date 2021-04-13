@@ -38,6 +38,6 @@ export class User extends BaseEntity {
   @UpdateDateColumn({ type: "timestamp" })
   updatedAt: string;
 
-  @OneToMany(() => Recipe, (recipe) => recipe.user)
+  @OneToMany((type) => Recipe, (recipe) => recipe.user)
   recipes: Recipe[];
 }

@@ -9,6 +9,10 @@ import { CreateCategoryResolver } from "./resolvers/Category/CreateCategoryResol
 import { GetCategoryResolver } from "./resolvers/Category/GetCategoryResolver";
 import { UpdateCategoryResolver } from "./resolvers/Category/UpdateCategoryResolver";
 import { DeleteCategoryResolver } from "./resolvers/Category/DeleteCategoryResolver";
+import { CreateRecipeResolver } from "./resolvers/Recipe/CreateRecipeResolver";
+import { GetRecipeResolver } from "./resolvers/Recipe/GetRecipeResolver";
+import { DeleteRecipeResolver } from "./resolvers/Recipe/DeleteRecipeResolver";
+import { UpdateRecipeResolver } from "./resolvers/Recipe/UpdateRecipeResolver";
 
 const main = async () => {
   await createConnection();
@@ -21,6 +25,10 @@ const main = async () => {
       GetCategoryResolver,
       UpdateCategoryResolver,
       DeleteCategoryResolver,
+      CreateRecipeResolver,
+      GetRecipeResolver,
+      DeleteRecipeResolver,
+      UpdateRecipeResolver
     ],
   });
 

@@ -10,3 +10,4 @@ services:
       POSTGRES_USER: myusername
       POSTGRES_PASSWORD: mypassword
       POSTGRES_DB: recipedb
+

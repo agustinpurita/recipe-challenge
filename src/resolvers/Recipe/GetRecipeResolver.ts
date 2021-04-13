@@ -8,6 +8,7 @@ import { GetRecipeInput, GetRecipesInput } from "./types/input/GetRecipeInput";
 @Resolver()
 export class GetRecipeResolver {
   @Query(() => Recipe)
+  @UseMiddleware(isAuth)
   async getRecipe(
     @Arg("input", () => GetRecipeInput)
     input: GetRecipeInput
@@ -23,6 +24,7 @@ export class GetRecipeResolver {
   }
 
   @Query(() => [Recipe])
+  @UseMiddleware(isAuth)
   async getRecipes(
     @Arg("input", () => GetRecipesInput, { nullable: true })
     input: GetRecipesInput

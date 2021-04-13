@@ -1,20 +1,13 @@
-import { Resolver, Mutation, Arg, Query, UseMiddleware, Ctx } from "type-graphql";
+import { Resolver, Mutation, Arg } from "type-graphql";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 import { User } from "../../entity/User";
 import { LoginInput } from "./types/input/LoginInput";
 import { LoginResponse } from "./types/response/LoginResponse";
-import { isAuth } from "../../middlewares/isAuth";
-import { Context } from "../../types/Context";
 
 @Resolver()
 export class LoginResolver {
-  @Query(() => String)
-  @UseMiddleware(isAuth)
-  async Me(@Ctx() ctx: Context) {
-    return `Your user token is : ${ctx.req.headers.authorization}`;
-  }
   @Mutation(() => LoginResponse)
   async login(
     @Arg("input")

@@ -14,6 +14,7 @@ export const isAuth: MiddlewareFn<Context> = async ({ context }, next) => {
   try {
     console.log(token);
     const payload = verify(token, "secretKey");
+    console.info("Token payload", payload);
     const decoded = jwt_decode<Token>(token);
     console.info("token decoded", decoded);
     const { userId } = decoded;

@@ -45,11 +45,11 @@ export class Recipe extends BaseEntity {
   @UpdateDateColumn({ type: "timestamp" })
   updatedAt: string;
 
-  @ManyToOne((type) => User)
+  @ManyToOne(() => User)
   @JoinColumn({ name: "userId", referencedColumnName: "id" })
   user: User;
 
-  @ManyToOne((type) => Category)
+  @ManyToOne(() => Category)
   @JoinColumn({ name: "categoryId", referencedColumnName: "id" })
   category: Category;
 }

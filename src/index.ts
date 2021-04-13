@@ -3,32 +3,35 @@ import { ApolloServer } from "apollo-server-express";
 import Express from "express";
 import { buildSchema } from "type-graphql";
 import { createConnection } from "typeorm";
-import { SignUpResolver } from "./resolvers/User/SignUpResolver";
-import { LoginResolver } from "./resolvers/User/LoginResolver";
-import { CreateCategoryResolver } from "./resolvers/Category/CreateCategoryResolver";
-import { GetCategoryResolver } from "./resolvers/Category/GetCategoryResolver";
-import { UpdateCategoryResolver } from "./resolvers/Category/UpdateCategoryResolver";
-import { DeleteCategoryResolver } from "./resolvers/Category/DeleteCategoryResolver";
-import { CreateRecipeResolver } from "./resolvers/Recipe/CreateRecipeResolver";
-import { GetRecipeResolver } from "./resolvers/Recipe/GetRecipeResolver";
-import { DeleteRecipeResolver } from "./resolvers/Recipe/DeleteRecipeResolver";
-import { UpdateRecipeResolver } from "./resolvers/Recipe/UpdateRecipeResolver";
+import { SignUpResolver, LoginResolver } from "./resolvers/User";
+import {
+  CreateCategoryResolver,
+  DeleteCategoryResolver,
+  UpdateCategoryResolver,
+  GetCategoryResolver,
+} from "./resolvers/Category";
+import {
+  CreateRecipeResolver,
+  DeleteRecipeResolver,
+  GetRecipeResolver,
+  UpdateRecipeResolver,
+} from "./resolvers/Recipe";
 
 const main = async () => {
   await createConnection();
 
   const schema = await buildSchema({
     resolvers: [
-      LoginResolver,
       SignUpResolver,
+      LoginResolver,
       CreateCategoryResolver,
       GetCategoryResolver,
       UpdateCategoryResolver,
       DeleteCategoryResolver,
       CreateRecipeResolver,
       GetRecipeResolver,
+      UpdateRecipeResolver,
       DeleteRecipeResolver,
-      UpdateRecipeResolver
     ],
   });
 

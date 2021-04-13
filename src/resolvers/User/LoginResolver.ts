@@ -3,10 +3,10 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 import { User } from "../../entity/User";
-import { LoginInput } from "./types/LoginInput";
-import { LoginResponse } from "./types/LoginResponse";
-import { isAuth } from "./helpers/isAuth";
-import { Context } from "./types/Context";
+import { LoginInput } from "./types/input/LoginInput";
+import { LoginResponse } from "./types/response/LoginResponse";
+import { isAuth } from "../../middlewares/isAuth";
+import { Context } from "../../types/Context";
 
 @Resolver()
 export class LoginResolver {

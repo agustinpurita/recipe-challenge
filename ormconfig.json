@@ -1,0 +1,11 @@
+{
+  "name": "default",
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5433,
+  "username": "myusername",
+  "password": "mypassword",
+  "database": "recipedb",
+  "synchronize": true,
+  "entities": ["src/entity/*.*"]
+}

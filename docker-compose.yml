@@ -4,9 +4,7 @@ services:
     container_name: postgres
     image: postgres:12.6
     ports:
-      - "5432:5432"
-    volumes:
-      - ./src/migrations/dbinit.sql:/docker-entrypoint-initdb.d/dbinit.sql
+      - "5433:5432"
     restart: always
     environment:
       POSTGRES_USER: myusername
